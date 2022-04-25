@@ -1,0 +1,11 @@
+現在ディレクトリーにはヘッダーファイルのみ生成でき、マッピングされる意味で使用されます。
+他のディレクトリ(__WINDOWS__)と同じ__NATIVE__下位ディレクトリで宣言ヘッダファイルとして使用されます。
+宣言されたヘッダーファイルの場合、__COMMON__ディレクトリーの下位プロジェクトに宣言されたヘッダーファイル#include<>を作成します。
+
+현재 디렉터리에는 헤더 파일만 생성할 수 있으며 매핑되는 의미로 사용됩니다.
+다른 디렉토리(__WINDOWS__)와 동일한 __NATIVE__ 하위 디렉토리에서 선언 헤더 파일로 사용됩니다.
+선언된 헤더 파일의 경우 __COMMON__ 디렉터리의 하위 프로젝트에 선언된 헤더 파일 #include<>를 작성합니다.
+
+Only header files can be created in the current directory and are used in the sense of being mapped.
+It is used as a declaration header file in the same __NATIVE__ subdirectory as another directory (__WINDOWS__).
+For the declared header file, write the header file #include<> declared in the subproject of the __COMMON__ directory.

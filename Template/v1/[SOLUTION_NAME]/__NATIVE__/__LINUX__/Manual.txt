@@ -1,0 +1,5 @@
+__INCLUDE__ディレクトリのヘッダーファイルをincludeして、当該ディレクトリでヘッダーファイルの関数定義をすればいいです。
+
+__INCLUDE_디렉토리의 헤더 파일을 include하고 해당 디렉토리에서 헤더 파일의 함수 정의를 하면 됩니다.
+
+You can include the header file in the __INCLUDE_ directory and define the function in the header file in that directory.
