@@ -1,0 +1,2 @@
+This is the directory where header files to be mapped are stored.
+You need to cross-compile your source code file, which is in "__NATIVE__/<Environment>/<your project>", so you need to unify the function name, class name, etc.

@@ -1,0 +1,2 @@
+A collection of projects is called a solution and should be free only within the project space or in the __LIBS__ directory.
+

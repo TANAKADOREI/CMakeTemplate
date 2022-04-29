@@ -1,0 +1,5 @@
+===================Example===================
+__LIBS__ <-(now)
+	<test_lib> <-(the library you want)
+		include <-(There should be an "include" directory in the library you want)		
+=============================================
