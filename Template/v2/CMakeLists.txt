@@ -126,42 +126,50 @@ if(${MB_CURRENT_ENVIRONMENT} STREQUAL "[NULL]")
 massage(fatal_error "is NULL")
 endif()
 
-if(EXISTS ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME})
-else()
 
 #create solution dir
+if(EXISTS ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME})
+else()
 file(COPY __TEMPLATE__/[SOLUTION_NAME] DESTINATION ${CMAKE_SOURCE_DIR})
 file(RENAME ${CMAKE_SOURCE_DIR}/[SOLUTION_NAME] ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME})
+endif()
 
 #create native environment dir
 foreach(mb_project ${MB_ENVIRONMENTS})
+if(EXISTS ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_project}__)
+else()
 file(COPY __TEMPLATE__/[NATIVE_DIR_NAME] DESTINATION ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/)
 file(RENAME ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/[NATIVE_DIR_NAME] ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_project}__)
+endif()
 endforeach()
 
 #create project ndirs
 foreach(mb_en ${MB_ENVIRONMENTS})
 foreach(mb_project ${MB_NATIVE_PROJECTS})
+if(EXISTS ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_en}__/${mb_project})
+else()
 file(COPY __TEMPLATE__/[PROJECT_NAME] DESTINATION ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_en}__)
 file(RENAME ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_en}__/[PROJECT_NAME] ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${mb_en}__/${mb_project})
+endif()
 endforeach()
 endforeach() 
 
 #create project cdirs
 foreach(mb_project ${MB_COMMON_PROJECTS})
+if(EXISTS ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__COMMON__/${mb_project})
+else()
 file(COPY __TEMPLATE__/[PROJECT_NAME] DESTINATION ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__COMMON__)
 file(RENAME ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__COMMON__/[PROJECT_NAME] ${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__COMMON__/${mb_project})
-endforeach()
-
 endif()
+endforeach()
 
 
 
 message(${MB_MSG_TAG} <==SOLUTION_BEGIN==>)
 
-foreach(mb_project ${MB_NATIVE_PROJECTS})
-message(${MB_MSG_TAG} Native Projects -> ${mb_project})
-add_subdirectory(${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${MB_CURRENT_ENVIRONMENT}__/${mb_project})
+foreach(mb_nproject ${MB_NATIVE_PROJECTS})
+message(${MB_MSG_TAG} Native Projects -> ${mb_nproject})
+add_subdirectory(${CMAKE_SOURCE_DIR}/${MB_SOLUTION_NAME}/__NATIVE__/__${MB_CURRENT_ENVIRONMENT}__/${mb_nproject})
 endforeach()
 
 foreach(mb_project ${MB_COMMON_PROJECTS})
