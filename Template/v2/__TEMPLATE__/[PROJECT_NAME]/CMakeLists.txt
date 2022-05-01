@@ -145,7 +145,7 @@ include_directories (${MB_INCLUDE_DIRS})
 foreach(mb_items ${MB_GLOBAL_PREPROC})
 message(${MB_MSG_TAG} preproc -> ${mb_items})
 endforeach()
-add_compile_definitions(${MB_PROJECT_NAME} PRIVATE ${MB_GLOBAL_PREPROC})
+add_compile_definitions(${MB_PROJECT_NAME} ${MB_GLOBAL_PREPROC})
 
 add_compile_options(${MB_OPTIONS2})
 
